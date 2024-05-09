@@ -1,0 +1,152 @@
+:root {
+    --primary: #b6895b;
+    --bg: #010101;
+}
+
+*{
+    margin: 0;                              
+    padding: 0;                             /* reset */    
+    box-sizing: border-box;                 /* biar tidak usah mengatur dimensi elemen saat kasih padding / border */
+    outline: none;                          /* berguna untuk styling button / form */
+    border: none;                           /* none = agar semua border bisa di setting masing masing*/
+    text-decoration: none;                  /* supaya tidak ada garis bawah ketika bikin link */
+}
+
+body{
+    font-family: 'Roboto', sans-serif;      /* font dari website */
+    background-color: var(--bg);
+    color: #fff;
+}
+
+/* navbar */
+.navbar{
+    display: flex;
+    justify-content: space-between; /*sejajar horizontal*/
+    align-items: center; /*sejajar secara vertikal*/
+    padding: 1.4rem 7%; /*padding dalam ukuran rem = relative terhadap pixel | 7% = buka dimanapun menyesuaikan sizenya*/
+    background-color: rgba(1, 1, 1, 0.8);
+    border-bottom: 1px solid #513c28;
+    position: fixed; /*halaman saat di scroll tetap diam di atas navbarnya*/
+    top: 0; /*supaya mentok ke atas posisinya*/
+    left: 0; /*tarik ke kiri*/
+    right: 0; /*tarik ke kanan*/
+    z-index: 9999; /*agar navbar selalu di atas*/
+}
+
+.navbar .navbar-logo {
+    font-size: 3rem;
+    font-weight: 700;
+    color: #fff;
+    font-style: italic;
+    font-variant: small-caps;
+}
+
+.navbar .navbar-logo span{
+    color: var(--primary);
+}
+
+.navbar .navbar-nav a {
+    color: #fff;
+    display: inline-block; /*buat margin agar tidak turun ke bawah*/
+    font-size: 1.4rem;
+    margin: 0 1rem;
+}
+
+.navbar .navbar-nav a:hover {
+    color: var(--primary); /*ketika di klik akan berubah warnanya*/
+}
+
+.navbar .navbar-nav a::after{ /*garis bawah ketika di arahkan ke sana*/
+    content: '';
+    display: block;
+    padding-bottom: 0.5rem;
+    border-bottom: 0.1rem solid var(--primary); 
+    transform: scaleX(0); /*agar menghilang garis bawahnya*/
+    transition: 0.3s linear;
+}
+
+.navbar .navbar-nav  a:hover::after{ /*untuk memunculkan kembali navbar garis bawahnya*/
+    transform: scaleX(0.5);
+}
+
+.navbar .navbar-extra a{
+    color: #fff;
+    margin: 0 0.5rem;
+}
+
+.navbar .navbar-extra a:hover{ /*bagian homebar menu*/
+    color: var(--primary)
+}
+
+#humberger-menu {
+    display: none;
+}
+
+
+/* Media Queries */
+
+/* Cari referensi mengenai responsive break point (titik titik lebar layar ketika css akan berubah) */
+
+/* Laptop */
+@media (max-width: 1366px){
+    html { /* penyesuaian di font size */
+    font-size: 75%;    
+    }
+}
+
+
+/* Tablet */
+@media (max-width: 768px){
+    html { /* penyesuaian di font size */
+    font-size: 62.5%;    
+    }
+    
+    /* style baru agar ganti menjadi humberger menu saat size tablet */
+    #humberger-menu{
+        display: inline-block;
+    }
+
+    /* atur side bar */
+    /* pindah navbar ketika size tablet ke luar layar */
+    .navbar .navbar-nav {
+        position: absolute;
+        top: 100%;
+        right: -100%;
+        background-color: #fff;
+        width: 30rem;
+        height: 100vh;
+        transition: 0.5s;
+    }
+
+    /* Panggil agar muncul ketika di klik side bar (di atur di js) */
+    .navbar .navbar-nav.active{
+        right: 0;
+    }
+
+    /* Benerin bagian menunya */
+    .navbar .navbar-nav a{
+        color: var(--bg);
+        display: block; /* akan membuat turun ke bawah */
+        margin: 1.5rem;
+        padding: 0.5rem;
+        font-size: 2rem;
+    }
+
+    /* Benerin bagian garis bawah nya */
+    .navbar .navbar-nav a::after{
+        transform-origin: 0 0; /* sb x = 0 | sb y = 0 */
+    }
+
+    /* Agar garis menyesuaikan ketika di arahkan ke button */
+    .navbar .navbar-nav a:hover::after{
+        transform: scaleX(0.2);
+    }
+}
+
+
+/* Mobile Phone */
+@media (max-width: 450px){
+    html { /* penyesuaian di font size */
+    font-size: 55%;    
+    }
+}
