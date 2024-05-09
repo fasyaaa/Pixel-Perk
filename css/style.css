@@ -16,6 +16,8 @@ body{
     font-family: 'Roboto', sans-serif;      /* font dari website */
     background-color: var(--bg);
     color: #fff;
+    /* halaman bisa di scroll */
+    /* min-height: 2000px;*/
 }
 
 /* navbar */
@@ -24,7 +26,7 @@ body{
     justify-content: space-between; /*sejajar horizontal*/
     align-items: center; /*sejajar secara vertikal*/
     padding: 1.4rem 7%; /*padding dalam ukuran rem = relative terhadap pixel | 7% = buka dimanapun menyesuaikan sizenya*/
-    background-color: rgba(1, 1, 1, 0.8);
+    background-color: rgb(1, 1, 3);
     border-bottom: 1px solid #513c28;
     position: fixed; /*halaman saat di scroll tetap diam di atas navbarnya*/
     top: 0; /*supaya mentok ke atas posisinya*/
@@ -82,6 +84,61 @@ body{
     display: none;
 }
 
+/* Hero Section */
+.hero{
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    background-image: url('../image/Home.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    position: relative;
+}
+
+.hero::after {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(0deg, rgba(1,1,3,1)3%, rgba(255,255,255,0)25%);         /* gradasi bg */
+}
+
+.hero .content{
+    padding: 1.4rem 7%;
+    max-width: 60rem;
+}
+
+.hero .content h1{
+    font-size: 5em;
+    color: #fff;
+    text-shadow: 1px 1px 3px rgba(1,1,3, 0.5);
+    line-height: 1.2;
+}
+
+.hero .content h1 span{
+    color: var(--primary);
+}
+
+.hero .content p{
+    font-size: 1.6rem;
+    margin-top: 1rem;
+    list-style: 1.4;
+    font-weight: 100;
+    text-shadow: 1px 1px 3px rgba(1,1,3, 0.5);
+}
+
+.hero .content .cta{
+    margin-top: 1rem;
+    display: inline-block;
+    padding: 1rem 3rem;
+    font-size: 1.4rem;
+    color: #fff;
+    background-color: var(--primary);
+    border-radius: 0.5rem;
+    box-shadow: 1px 1px 3px rgba(1,1,3, 0.5);
+}
 
 /* Media Queries */
 
